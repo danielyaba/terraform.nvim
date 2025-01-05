@@ -1,12 +1,12 @@
 local M = {}
 
 -- Highlight keywords
-local function highlight_output(bufnr, line, keyword, hl_group)
-  local start_pos, end_pos = string.find(line:lower(), keyword:lower())
-  if start_pos and end_pos then
-    vim.api.nvim_buf_add_highlight(bufnr, -1, hl_group, vim.api.nvim_buf_line_count(bufnr) - 2, start_pos - 1, end_pos)
-  end
-end
+-- local function highlight_output(bufnr, line, keyword, hl_group)
+--   local start_pos, end_pos = string.find(line:lower(), keyword:lower())
+--   if start_pos and end_pos then
+--     vim.api.nvim_buf_add_highlight(bufnr, -1, hl_group, vim.api.nvim_buf_line_count(bufnr) - 2, start_pos - 1, end_pos)
+--   end
+-- end
 
 -- Run a Terraform command
 local function run_terraform_command(command)

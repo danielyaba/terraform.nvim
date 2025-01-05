@@ -5,17 +5,18 @@ A Terraform plugin for Neovim for running Terraform commands in a split pane
 ## Installation Using Lazy
 ```
 {
-  'danielyaba/terraform.nvim'
+  'danielyaba/terraform.nvim',
   config = function()
-    local terraform = require("terraform_plugin")  
+    -- Load the Terraform module
+    local terraform = require("terraform")
   end,
 
   -- Key mappings
   keys = {
-    vim.api.nvim_set_keymap("n", "<leader>tfp", "<cmd>lua terraform_plugin.plan()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<leader>tfi", "<cmd>lua terraform_plugin.init()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<leader>tfa", "<cmd>lua terraform_plugin.apply()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<leader>tfaa", "<cmd>lua terraform_plugin.apply_auto_approve()<CR>", { noremap = true, silent = true })
-  } 
+    { "<leader>tfp",  function() require("terraform").plan() end,               desc = "Terraform Plan" },
+    { "<leader>tfi",  function() require("terraform").init() end,               desc = "Terraform Init" },
+    { "<leader>tfa",  function() require("terraform").apply() end,              desc = "Terraform Apply" },
+    { "<leader>tfaa", function() require("terraform").apply_auto_approve() end, desc = "Terraform Apply Auto-Approve" },
+  }
 }
 ```
